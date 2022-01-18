@@ -29,14 +29,14 @@ function playRound(e) {
     else if (computerSelection == playerSelection) result = 'tie';
 
     if (result == 'loss') {
-        roundOutcome.innerText = `You lose! ${computerSelection} beats ${playerSelection}!`;
+        roundOutcome.innerText = `You lose! ${capitalizeFirstLetter(computerSelection)} beats ${playerSelection}!`;
         updateScore(computerScore);
     }
     else if (result == 'tie') {
-        roundOutcome.innerText = `You tied! You both threw ${computerSelection}!`;
+        roundOutcome.innerText = `Tie! You both threw ${computerSelection}!`;
     }
     else {
-        roundOutcome.innerText = `You win! ${playerSelection} beats ${computerSelection}!`;
+        roundOutcome.innerText = `You win! ${capitalizeFirstLetter(playerSelection)} beats ${computerSelection}!`;
         updateScore(playerScore);
     }
 }
@@ -50,7 +50,7 @@ function updateScore(winner) {
 
 function endGame() {
     if (playerScore.innerText > computerScore.innerText) endGameText.innerText = 'You win! Yay :)';
-    else endGameText.innerText = 'You lose! Boo Hoo :(';
+    else endGameText.innerText = 'You lose! Boo hoo :(';
     endGameDiv.style['display'] = 'block';
     rock.disabled = true;
     paper.disabled = true;
@@ -67,5 +67,6 @@ function restart() {
     endGameDiv.style['display'] = 'none';
 }
 
-
-
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
